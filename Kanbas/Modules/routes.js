@@ -64,6 +64,4 @@ export default function ModuleRoutes(app) {
   //       const modules = db.modules.filter((m) => m.course === cid);
   //       res.json(modules);
   // });
-
-
 }

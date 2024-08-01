@@ -16,9 +16,9 @@ export default function CourseRoutes(app) {
   //   res.sendStatus(204);
   // });
 
-  app.delete("/api/courses/:id", async (req, res) => {
-    const { id } = req.params;
-    const status = await dao.deleteCourse(id);
+  app.delete("/api/courses/:number", async (req, res) => {
+    const { number } = req.params;
+    const status = await dao.deleteCourse(number);
     res.sendStatus(status ? 204 : 404); // Send 404 if delete failed
 });
 
@@ -50,9 +50,9 @@ export default function CourseRoutes(app) {
   //   res.send(courses);
   // });
 
-  app.get("/api/courses/:id", async (req, res) => {
-    const { id } = req.params;
-    const course = await dao.findCourseById(id);
+  app.get("/api/courses/:number", async (req, res) => {
+    const { number } = req.params;
+    const course = await dao.findCourseByNumber(number);
     if (course) {
         res.send(course);
     } else {
