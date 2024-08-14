@@ -7,6 +7,7 @@ const courseSchema = new mongoose.Schema({
     department: { type: String, required: true },
     credits: { type: Number, required: true },
     description: { type: String },
+    author: {type: String}
 }, { collection: "courses" });
 
 export default courseSchema;

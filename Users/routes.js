@@ -87,5 +87,31 @@ export default function UserRoutes(app) {
     };
     app.post("/api/users/profile", profile);
 
-    
+    // Adding a quiz attempt for a user
+    const addQuizAttempt = async (req, res) => {
+        const { userId } = req.params;
+        const { quizId, answers, score } = req.body;
+        
+        const attempt = {
+            quizId,
+            answers,
+            score,
+            date: new Date(),
+        };
+
+        const result = await dao.addQuizAttempt(userId, attempt);
+        res.json(result);
+    };
+    app.post("/api/users/:userId/quiz-attempts", addQuizAttempt);
+
+    // Retrieving quiz attempts for a user
+    const getQuizAttempts = async (req, res) => {
+        const { userId } = req.params;
+        const attempts = await dao.getQuizAttempts(userId);
+        res.json(attempts);
+    };
+    app.get("/api/users/:userId/quiz-attempts", getQuizAttempts);
 }
+
+    
+

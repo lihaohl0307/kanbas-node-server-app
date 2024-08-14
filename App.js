@@ -5,11 +5,13 @@ import Lab5 from "./Lab5/index.js"
 import CourseRoutes from "./Kanbas/Courses/routes.js";
 import ModuleRoutes from "./Kanbas/Modules/routes.js";
 import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
+import QuizRoutes from "./Kanbas/Quizzes/routes.js"
 import mongoose from "mongoose";
 import "dotenv/config";
 import UserRoutes from "./Users/routes.js";
 import session from "express-session";
 import "dotenv/config";
+import QuestionRoutes from "./Kanbas/Questions/routes.js";
 
 const app = express();
 
@@ -43,6 +45,8 @@ mongoose.connect(CONNECTION_STRING);
 CourseRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
+QuizRoutes(app);
+QuestionRoutes(app);
 UserRoutes(app);
 
 Hello(app);

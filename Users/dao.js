@@ -32,5 +32,19 @@ export const createUser = (user) => {
     return model.create(user);
 } 
 
+// New function to add a quiz attempt for a user
+export const addQuizAttempt = (userId, attempt) => {
+    return model.findByIdAndUpdate(
+        userId,
+        { $push: { quizAttempts: attempt } },
+        { new: true }
+    );
+};
+
+// New function to get all quiz attempts for a user
+export const getQuizAttempts = (userId) => {
+    return model.findById(userId, { quizAttempts: 1, _id: 0 });
+};
+
 
   
